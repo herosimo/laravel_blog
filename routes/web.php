@@ -24,7 +24,42 @@ Route::get('/comments', function () {
     return view('blog/comments');
 });
 
+
 // Web Routes for admin
 Route::get('/admin', function () {
     return view('admin/index');
+});
+
+// Post
+Route::get('/admin/post', function () {
+    return view('admin/post/post');
+});
+
+Route::get('/admin/post/add-post', function () {
+    return view('admin/post/add-post');
+});
+
+Route::get('/admin/post/edit-post', function () {
+    return view('admin/post/edit-post');
+});
+
+
+// Comment
+Route::get('/admin/comment', function () {
+    return view('admin/comment/comment');
+});
+
+// Account
+Route::get('/admin/account', function () {
+    return view('admin/account/account');
+});
+
+// Account
+Route::get('/admin/account/profile', function () {
+    return view('admin/account/profile');
+});
+
+// Account
+Route::get('/admin/account/change-password', function () {
+    return view('admin/account/change-password');
 });
