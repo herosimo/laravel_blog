@@ -65,7 +65,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage posts:</h6>
             <a class="collapse-item" href="/admin/post">Post Insight</a>
-            <a class="collapse-item" href="/admin/post/add-post">Add Post</a>
+            <a class="collapse-item" href="/admin/post/create">Add Post</a>
           </div>
         </div>
       </li>

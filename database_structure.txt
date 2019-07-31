@@ -7,8 +7,8 @@ Posts
 
 PostDetails
   PostDetailID (identity)
-  PostID (FK to Posts)
   PostText (text)
+  PostID (FK to Posts)
 
 Comments
   CommentID (identity)
@@ -16,6 +16,7 @@ Comments
   CommenterName (varchar)
   CommentDate (datetime)
   Deleted (int)
+  PostID (FK to Posts)
 
 Users
   UserID (identity)
