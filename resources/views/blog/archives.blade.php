@@ -6,8 +6,11 @@
 
 @section('content')
 <h2>Archives</h2>
+
+@foreach($posts as $post)
 <ul>
-    <li>First Post</li>
-    <li>Second Post</li>
+    <li>{{ $post->post_title }}</li>
 </ul>
+@endforeach
+
 @endsection('content')

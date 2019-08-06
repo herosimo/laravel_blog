@@ -49,7 +49,9 @@
 
         <div class="row justify-content-center">
             <div class="col-8 d-flex justify-content-center">
+                <br><br>
                 2019. All rights reserved.
+                <br><br>
             </div>
         </div>
     </div>

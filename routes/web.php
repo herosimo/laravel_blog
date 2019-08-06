@@ -12,13 +12,9 @@
 */
 
 // Web Routes for blog
-Route::get('/', function () {
-    return view('blog/index');
-});
+Route::get('/', 'BlogController@index');
 
-Route::get('/archives', function () {
-    return view('blog/archives');
-});
+Route::get('/archives', 'BlogController@archives');
 
 Route::get('/comments', function () {
     return view('blog/comments');
@@ -32,19 +28,6 @@ Route::get('/admin', function () {
 
 // Post
 Route::resource('/admin/post', 'PostController');
-
-// Route::get('/admin/post', function () {
-//     return view('admin/post/post');
-// });
-
-// Route::get('/admin/post/add-post', function () {
-//     return view('admin/post/add-post');
-// });
-
-// Route::get('/admin/post/edit-post', function () {
-//     return view('admin/post/edit-post');
-// });
-
 
 // Comment
 Route::get('/admin/comment', function () {
