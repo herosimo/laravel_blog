@@ -20,6 +20,10 @@ Route::get('/comments', function () {
     return view('blog/comments');
 });
 
+Route::get('/show', function () {
+    return view('blog/show');
+});
+
 
 // Web Routes for admin
 Route::get('/admin', function () {
