@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 
 class BlogController extends Controller
 {
@@ -22,6 +23,12 @@ class BlogController extends Controller
     {
         $posts = Post::all();
         return view('/blog/archives', compact('posts'));
+    }
+
+    public function comments()
+    {
+        $comments = Comment::all();
+        return view('blog/comments', compact('comments'));
     }
 
     /**
@@ -53,7 +60,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('/blog/show', compact('post'));
     }
 
     /**

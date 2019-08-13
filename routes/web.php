@@ -16,9 +16,9 @@ Route::get('/', 'BlogController@index');
 
 Route::get('/archives', 'BlogController@archives');
 
-Route::get('/comments', function () {
-    return view('blog/comments');
-});
+Route::get('/post/{id}', 'BlogController@show');
+
+Route::get('/comments', 'BlogController@comments');
 
 Route::get('/show', function () {
     return view('blog/show');
@@ -34,9 +34,7 @@ Route::get('/admin', function () {
 Route::resource('/admin/post', 'PostController');
 
 // Comment
-Route::get('/admin/comment', function () {
-    return view('admin/comment/comment');
-});
+Route::resource('/admin/comment', 'CommentController');
 
 // Account
 Route::get('/admin/account', function () {
