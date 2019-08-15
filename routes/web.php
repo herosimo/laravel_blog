@@ -20,15 +20,10 @@ Route::get('/post/{id}', 'BlogController@show');
 
 Route::get('/comments', 'BlogController@comments');
 
-Route::get('/show', function () {
-    return view('blog/show');
-});
-
-
 // Web Routes for admin
 Route::get('/admin', function () {
     return view('admin/index');
-});
+})->middleware('auth');
 
 // Post
 Route::resource('/admin/post', 'PostController');
@@ -48,3 +43,8 @@ Route::get('/admin/account/profile', function () {
 Route::get('/admin/account/change-password', function () {
     return view('admin/account/change-password');
 });
+
+// Auth::routes(['register' => false]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

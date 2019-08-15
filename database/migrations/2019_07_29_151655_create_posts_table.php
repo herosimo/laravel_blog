@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->char('post_title');
             $table->longText('post_text');
             $table->integer('archived');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

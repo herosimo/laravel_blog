@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>{{ $post->post_title }}</h1>
-<p class="text-secondary">Posted by Herosimo Sribiko, on 08/08/2019</p>
+<p class="text-secondary">Posted by {{ $post->user->name }}, on {{ $post->created_at }}</p>
 
 <p>
     {{ $post->post_text }}

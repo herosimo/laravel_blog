@@ -8,6 +8,11 @@ use App\Post;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +46,7 @@ class PostController extends Controller
         $post->post_title = $request->post_title;
         $post->post_text = $request->post_text;
         $post->archived = $request->archived;
+        $post->user_id = $request->user_id;
         $post->save();
 
         return redirect('/admin/post');

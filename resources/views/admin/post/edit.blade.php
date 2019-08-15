@@ -4,7 +4,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Edit Post</h1>
-<form action="/admin/post/{{ $post->post_id }}" method="post">
+<form action="/admin/post/{{ $post->id }}" method="post">
     @csrf
     @method('PATCH')
     <div class="form-group">

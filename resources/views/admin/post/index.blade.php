@@ -31,14 +31,14 @@
         <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $post->post_title }}</td>
-            <td>Otto</td>
+            <td>{{ $post->user->name }}</td>
             <td>{{ $post->created_at }}</td>
             <td>
-                <form class="form-inline" action="/admin/post/{{ $post->post_id }}" method="post">
+                <form class="form-inline" action="/admin/post/{{ $post->id }}" method="post">
                     @method('DELETE')
                     @csrf
                     <div class="form-group mr-1">
-                        <a href="/admin/post/{{ $post->post_id }}/edit">
+                        <a href="/admin/post/{{ $post->id }}/edit">
                             <button type="button" class="btn btn-primary btn-sm">Edit</button>
                         </a>
                     </div>

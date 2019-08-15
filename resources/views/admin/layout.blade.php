@@ -149,7 +149,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/admin/account/profile">
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-                <span class="ml-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="ml-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
               </a>
             </li>
 
