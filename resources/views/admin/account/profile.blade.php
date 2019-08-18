@@ -4,6 +4,25 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Profile</h1>
-<p>Welcome to profile.</p>
+<p>Update your profile.</p>
+
+<form method="post" action="/admin/account/profile">
+    @csrf
+    @method('PATCH')
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ $user->email }}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Your Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Change</button>
+</form>
 
 @endsection('content')

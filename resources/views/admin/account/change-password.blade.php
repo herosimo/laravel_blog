@@ -4,11 +4,14 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Change Password</h1>
-<form>
+<form action="/admin/account/change-password" method="post">
+    @csrf
+    @method('PATCH')
+
     <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ $user->email }}">
         </div>
     </div>
     <div class="form-group row">
@@ -20,7 +23,7 @@
     <div class="form-group row">
         <label for="inputPassword" class="col-sm-2 col-form-label">Password-Repeat</label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password-Repeat">
+            <input type="password" class="form-control" id="inputPassword" name="newPassword" placeholder="Password-Repeat">
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Change</button>

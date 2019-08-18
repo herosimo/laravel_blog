@@ -2,13 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    public function profile()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        return view('admin/account/profile', compact('user'));
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->save();
+
+        return redirect('/admin/account/profile');
+    }
+
+    public function changePassword()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        return view('admin/account/change-password', compact('user'));
+    }
+
+    public function changePasswordUpdate(Request $request)
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+
+        $user->password = Hash::make($request->newPassword);
+        $user->save();
+
+        return redirect('/admin/account/change-password');
     }
 
     /**
@@ -18,7 +63,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/account/index');
     }
 
     /**

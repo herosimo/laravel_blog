@@ -13,17 +13,13 @@
 
 // Web Routes for blog
 Route::get('/', 'BlogController@index');
-
 Route::get('/archives', 'BlogController@archives');
-
 Route::get('/post/{id}', 'BlogController@show');
-
 Route::get('/comments', 'BlogController@comments');
 
+
 // Web Routes for admin
-Route::get('/admin', function () {
-    return view('admin/index');
-})->middleware('auth');
+Route::get('/admin', 'AccountController@index');
 
 // Post
 Route::resource('/admin/post', 'PostController');
@@ -32,17 +28,13 @@ Route::resource('/admin/post', 'PostController');
 Route::resource('/admin/comment', 'CommentController');
 
 // Account
-Route::get('/admin/account', function () {
-    return view('admin/account/account');
-});
+Route::get('/admin/account/logout', 'AccountController@logout');
+Route::get('/admin/account/profile', 'AccountController@profile');
+Route::patch('/admin/account/profile', 'AccountController@profileUpdate');
 
-Route::get('/admin/account/profile', function () {
-    return view('admin/account/profile');
-});
+Route::get('/admin/account/change-password', 'AccountController@changePassword');
+Route::patch('/admin/account/change-password', 'AccountController@changePasswordUpdate');
 
-Route::get('/admin/account/change-password', function () {
-    return view('admin/account/change-password');
-});
 
 // Auth::routes(['register' => false]);
 Auth::routes();

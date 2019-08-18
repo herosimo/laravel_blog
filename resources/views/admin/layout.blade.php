@@ -101,7 +101,6 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage account:</h6>
-            <a class="collapse-item" href="/admin/account">Account Insight</a>
             <a class="collapse-item" href="/admin/account/profile">Profile</a>
             <a class="collapse-item" href="/admin/account/change-password">Change Password</a>
           </div>
@@ -138,7 +137,7 @@
 
             <!-- Logout Button -->
             <li class="nav-item">
-              <a class="nav-link" href="/admin/logout">
+              <a class="nav-link" href="/admin/account/logout">
                 <i class="fas fa-fw fa-power-off"></i>
               </a>
             </li>
