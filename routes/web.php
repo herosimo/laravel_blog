@@ -38,5 +38,3 @@ Route::patch('/admin/account/change-password', 'AccountController@changePassword
 
 // Auth::routes(['register' => false]);
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

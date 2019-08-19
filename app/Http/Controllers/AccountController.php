@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,48 +13,6 @@ class AccountController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
-    }
-
-    public function profile()
-    {
-        $id = Auth::id();
-        $user = User::find($id);
-        return view('admin/account/profile', compact('user'));
-    }
-
-    public function profileUpdate(Request $request)
-    {
-        $id = Auth::id();
-        $user = User::find($id);
-
-        $user->name = $request->name;
-        $user->save();
-
-        return redirect('/admin/account/profile');
-    }
-
-    public function changePassword()
-    {
-        $id = Auth::id();
-        $user = User::find($id);
-        return view('admin/account/change-password', compact('user'));
-    }
-
-    public function changePasswordUpdate(Request $request)
-    {
-        $id = Auth::id();
-        $user = User::find($id);
-
-        $user->password = Hash::make($request->newPassword);
-        $user->save();
-
-        return redirect('/admin/account/change-password');
     }
 
     /**
@@ -66,69 +25,61 @@ class AccountController extends Controller
         return view('admin/account/index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function profile()
     {
-        //
+        $id = Auth::id();
+        $user = User::find($id);
+        return view('admin/account/profile', compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function profileUpdate(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $id = Auth::id();
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->save();
+
+        Session::flash('success', 'Your changes has been saved');
+        return redirect('/admin/account/profile');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function changePassword()
     {
-        //
+        $id = Auth::id();
+        $user = User::find($id);
+        return view('admin/account/change-password', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function changePasswordUpdate(Request $request)
     {
-        //
+        $this->validate($request, [
+            'currentPassword' => 'required',
+            'newPassword' => 'required|min:3|confirmed'
+        ]);
+
+        $id = Auth::id();
+        $user = User::find($id);
+
+        if (Hash::check($request->currentPassword, $user->password)) {
+            $user->password = Hash::make($request->newPassword_confirmation);
+            $user->save();
+
+            Session::flash('success', 'Your changes has been saved');
+            return redirect('/admin/account/change-password');
+        } else {
+            Session::flash('fail', 'Current Password is wrong!');
+            return redirect('/admin/account/change-password');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Auth::logout();
+        return redirect('/login');
     }
 }

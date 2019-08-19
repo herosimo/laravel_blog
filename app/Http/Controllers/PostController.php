@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Session;
 
 
 class PostController extends Controller
@@ -42,6 +43,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'post_title' => 'required',
+            'post_text' => 'required'
+        ]);
+
         $post = new Post;
         $post->post_title = $request->post_title;
         $post->post_text = $request->post_text;
@@ -49,6 +55,7 @@ class PostController extends Controller
         $post->user_id = $request->user_id;
         $post->save();
 
+        Session::flash('success', 'You have successfully make a new post');
         return redirect('/admin/post');
     }
 
@@ -73,11 +80,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'post_title' => 'required',
+            'post_text' => 'required'
+        ]);
+
         $post = Post::find($id);
         $post->post_title = $request->post_title;
         $post->post_text = $request->post_text;
         $post->save();
 
+        Session::flash('edit', 'Successfully edit post');
         return redirect('/admin/post');
     }
 
@@ -92,6 +105,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
+        Session::flash('delete', 'Post has been deleted');
         return redirect('/admin/post');
     }
 }

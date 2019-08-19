@@ -5,6 +5,16 @@
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Comment</h1>
 <p>Welcome to comment insight.</p>
+
+@if ($message = session()->get('delete'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ $message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 <table class="table table-hover">
     <thead>
         <tr class="table-primary">

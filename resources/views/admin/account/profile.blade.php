@@ -9,6 +9,27 @@
 <form method="post" action="/admin/account/profile">
     @csrf
     @method('PATCH')
+
+    @if ($message = session()->get('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ $message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    @if( $errors->any() )
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @foreach ($errors->all() as $error)
+        {{$error}} <br>
+        @endforeach
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
     <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
@@ -18,7 +39,7 @@
     <div class="form-group row">
         <label for="name" class="col-sm-2 col-form-label">Your Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
         </div>
     </div>
 
