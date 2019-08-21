@@ -15,7 +15,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('archived', '0')
+            ->orderBy('created_at', 'desc')
+            ->paginate(2);
+
         return view('/blog/index', compact('posts'));
     }
 
@@ -41,5 +44,15 @@ class BlogController extends Controller
     {
         $comments = Comment::all();
         return view('blog/comments', compact('comments'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->title;
+
+        $posts = Post::where('post_title', 'like', '%' . $search . '%')
+            ->paginate(2);
+
+        return view('/blog/index', compact('posts', 'search'));
     }
 }

@@ -16,6 +16,7 @@ Route::get('/', 'BlogController@index');
 Route::get('/archives', 'BlogController@archives');
 Route::get('/post/{id}', 'BlogController@show');
 Route::get('/comments', 'BlogController@comments');
+Route::get('/search', 'BlogController@search');
 
 
 // Web Routes for admin

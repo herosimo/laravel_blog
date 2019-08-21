@@ -25,8 +25,15 @@
                         <a class="nav-link" href="/comments">Comments</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0" method="GET" action="/search">
+                    @empty($search)
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="title" id="title">
+                    @endempty
+
+                    @isset($search)
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="title" id="title" value="{{ $search }}">
+                    @endisset
+
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>

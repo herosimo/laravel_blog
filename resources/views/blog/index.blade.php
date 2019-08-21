@@ -11,4 +11,6 @@
 <hr><br>
 @endforeach
 
+{{ $posts->links() }}
+
 @endsection('content')
