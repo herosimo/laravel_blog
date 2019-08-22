@@ -25,12 +25,13 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->first();
+
         return view('/blog/show', compact('post'));
     }
 
@@ -48,10 +49,14 @@ class BlogController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->title;
+        $search = $request->search;
 
         $posts = Post::where('post_title', 'like', '%' . $search . '%')
+            ->orWhere('post_text', 'like', '%' . $search . '%')
+            ->orderBy('created_at', 'desc')
             ->paginate(2);
+
+        $posts->appends($request->only('search'));
 
         return view('/blog/index', compact('posts', 'search'));
     }

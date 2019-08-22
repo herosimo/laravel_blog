@@ -51,6 +51,7 @@ class PostController extends Controller
         $post = new Post;
         $post->post_title = $request->post_title;
         $post->post_text = $request->post_text;
+        $post->slug = str_replace(' ', '-', strtolower($request->post_title));
         $post->archived = $request->archived;
         $post->user_id = $request->user_id;
         $post->save();
@@ -88,6 +89,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->post_title = $request->post_title;
         $post->post_text = $request->post_text;
+        $post->slug = str_replace(' ', '-', strtolower($request->post_title));
         $post->save();
 
         Session::flash('edit', 'Successfully edit post');

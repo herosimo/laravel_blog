@@ -2,7 +2,7 @@
 @section('content')
 
 @foreach($posts as $post)
-<a href="post/{{ $post->id }}">
+<a href="post/{{ $post->slug }}">
     <h2>{{ $post->post_title }}</h2>
 </a>
 <span>{{ $post->created_at }}</span> <span>~ by {{ $post->user->name }}</span>

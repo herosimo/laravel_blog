@@ -34,7 +34,7 @@
 <h4>{{ $post->comments->count() }} Comments</h4>
 
 @foreach($post->comments as $comment)
-<h6>{{ $comment->commenter_name }}</h6>
+<h5>{{ $comment->commenter_name }}</h5>
 <p>
     {{ $comment->comment }}
 </p>

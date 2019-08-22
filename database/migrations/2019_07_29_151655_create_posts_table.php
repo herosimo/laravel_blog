@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->char('post_title');
             $table->longText('post_text');
+            $table->char('slug');
             $table->integer('archived');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

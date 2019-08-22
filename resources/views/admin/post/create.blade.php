@@ -19,7 +19,7 @@
     @endif
 
     <div class="form-group">
-        <input type="hidden" id="archived" name="archived" value=1 />
+        <input type="hidden" id="archived" name="archived" value=0 />
         <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
 
         <label for="title">Post Title</label>
