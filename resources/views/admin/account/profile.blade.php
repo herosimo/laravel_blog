@@ -6,7 +6,7 @@
 <h1 class="h3 mb-4 text-gray-800">Profile</h1>
 <p>Update your profile.</p>
 
-<form method="post" action="/admin/account/profile">
+<form method="post" action="/admin/account/profile" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
 
@@ -41,6 +41,10 @@
         <div class="col-sm-10">
             <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
         </div>
+    </div>
+    <div class="form-group">
+        <label for="photo-profile">Photo Profile</label>
+        <input type="file" class="form-control-file" id="photoProfile" name="photoProfile" value="" required>
     </div>
 
     <button type="submit" class="btn btn-primary">Change</button>

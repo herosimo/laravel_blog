@@ -36,6 +36,9 @@ Route::patch('/admin/account/profile', 'AccountController@profileUpdate');
 Route::get('/admin/account/change-password', 'AccountController@changePassword');
 Route::patch('/admin/account/change-password', 'AccountController@changePasswordUpdate');
 
+// Upload
+Route::get('/admin/upload', 'UploadController@upload');
+
 
 // Auth::routes(['register' => false]);
 Auth::routes();
