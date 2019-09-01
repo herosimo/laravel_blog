@@ -33,7 +33,10 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center" href="/admin">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+        <!-- <div class="sidebar-brand-icon"> -->
+        <i class="fas fa-heart"></i>
+        <!-- </div> -->
         <div class="sidebar-brand-text mx-3">Laravel Blog</div>
       </a>
 
@@ -43,7 +46,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/admin">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-compass"></i>
           <span>Dashboard</span></a>
       </li>
 
@@ -73,13 +76,36 @@
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-comments"></i>
+          <i class="fas fa-fw fa-comment-alt"></i>
           <span>Comments</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage comments:</h6>
             <a class="collapse-item" href="/admin/comment">Comment Insight</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Media
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseMedia">
+          <i class="fas fa-fw fa-play-circle"></i>
+          <span>Media</span>
+        </a>
+        <div id="collapseMedia" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Media:</h6>
+            <a class="collapse-item" href="/admin/media">Library</a>
+            <a class="collapse-item" href="/admin/media/create">Add New</a>
           </div>
         </div>
       </li>
@@ -126,6 +152,8 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <h1 class="h3 text-gray-800">@yield('heading', 'Admin Page')</h1>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">

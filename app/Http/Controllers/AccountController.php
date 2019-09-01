@@ -82,7 +82,7 @@ class AccountController extends Controller
             $user->password = Hash::make($request->newPassword_confirmation);
             $user->save();
 
-            Session::flash('success', 'Your changes has been saved');
+            Session::flash('success', 'Your changes have been saved');
             return redirect('/admin/account/change-password');
         } else {
             Session::flash('fail', 'Current Password is wrong!');

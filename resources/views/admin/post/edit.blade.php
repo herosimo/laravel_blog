@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Edit Post</h1>
+@section('heading', 'Edit Post')
 <form action="/admin/post/{{ $post->id }}" method="post">
     @csrf
     @method('PATCH')

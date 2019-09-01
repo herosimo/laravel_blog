@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Add Post</h1>
+@section('heading', 'Add Post')
 <form method="POST" action="/admin/post">
     @csrf
 

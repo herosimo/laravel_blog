@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Post</h1>
+@section('heading', 'Posts')
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -70,7 +70,7 @@
                             <button type="button" class="btn btn-primary btn-sm">Edit</button>
                         </a>
                     </div>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button></a>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
             </td>
         </tr>

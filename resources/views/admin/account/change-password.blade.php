@@ -3,7 +3,8 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Change Password</h1>
+@section('heading', 'Change Password')
+
 <form action="/admin/account/change-password" method="post">
     @csrf
     @method('PATCH')

@@ -28,6 +28,11 @@ Route::resource('/admin/post', 'PostController');
 // Comment
 Route::resource('/admin/comment', 'CommentController');
 
+// Media
+Route::get('/admin/media', 'MediaController@index');
+Route::post('/admin/media', 'MediaController@store');
+Route::delete('/admin/media', 'MediaController@destroy');
+
 // Account
 Route::get('/admin/account/logout', 'AccountController@logout');
 Route::get('/admin/account/profile', 'AccountController@profile');

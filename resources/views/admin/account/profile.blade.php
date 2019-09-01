@@ -3,8 +3,7 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Profile</h1>
-<p>Update your profile.</p>
+@section('heading', 'Profile')
 
 <form method="post" action="/admin/account/profile" enctype="multipart/form-data">
     @csrf

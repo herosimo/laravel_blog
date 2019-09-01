@@ -3,8 +3,7 @@
 @section('content')
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Comment</h1>
-<p>Welcome to comment insight.</p>
+@section('heading', 'Comments')
 
 @if ($message = session()->get('delete'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
