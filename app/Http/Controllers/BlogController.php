@@ -17,7 +17,7 @@ class BlogController extends Controller
     {
         $posts = Post::where('archived', '0')
             ->orderBy('created_at', 'desc')
-            ->paginate(2);
+            ->paginate(10);
 
         return view('/blog/index', compact('posts'));
     }
@@ -54,7 +54,7 @@ class BlogController extends Controller
         $posts = Post::where('post_title', 'like', '%' . $search . '%')
             ->orWhere('post_text', 'like', '%' . $search . '%')
             ->orderBy('created_at', 'desc')
-            ->paginate(2);
+            ->paginate(10);
 
         $posts->appends($request->only('search'));
 

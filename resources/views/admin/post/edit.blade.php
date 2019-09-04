@@ -2,6 +2,7 @@
 @section('title', 'Admin Page > Post > Edit')
 @section('content')
 
+
 <!-- Page Heading -->
 @section('heading', 'Edit Post')
 <form action="/admin/post/{{ $post->id }}" method="post">
@@ -25,9 +26,19 @@
     </div>
     <div class="form-group">
         <label for="post_text">Post Content</label>
-        <textarea class="form-control" id="post_text" name="post_text" rows="10" required>{{ $post->post_text }}</textarea>
+        <textarea class="form-control" id="editor" name="post_text" rows="10" required>{{ $post->post_text }}</textarea>
     </div>
     <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection('content')

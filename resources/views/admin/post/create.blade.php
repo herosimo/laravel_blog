@@ -26,10 +26,20 @@
         <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Add Title" required>
     </div>
     <div class="form-group">
-        <label for="post_text">Post Content</label>
-        <textarea class="form-control" id="post_text" name="post_text" rows="10" placeholder="Add Content" required></textarea>
+        <label for="editor">Post Content</label>
+        <textarea class="form-control" name="post_text" id="editor" rows="100" placeholder="Add Content"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Publish</button>
 </form>
 
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection('content')

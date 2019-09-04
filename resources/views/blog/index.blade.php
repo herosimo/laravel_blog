@@ -7,7 +7,7 @@
 </a>
 <span>{{ $post->created_at }}</span> <span>~ by {{ $post->user->name }}</span>
 <br><br>
-{{$post->post_text}}
+{!! $post->post_text !!}
 <hr><br>
 @endforeach
 

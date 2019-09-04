@@ -6,7 +6,7 @@
 <p class="text-secondary">Posted by {{ $post->user->name }}, on {{ $post->created_at }}</p>
 
 <div>
-    {{ $post->post_text }}
+    {!! $post->post_text !!}
 </div>
 
 <hr>
