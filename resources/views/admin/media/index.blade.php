@@ -51,7 +51,7 @@
                     <form class="form" action="/admin/media" method="post">
                         @method('DELETE')
                         @csrf
-                        <h5 class="card-title">{{ $names[$loop->index] }}</h5>
+                        <h5 class="card-title">{{ $image }}</h5>
 
                         <input type="hidden" name="file" value="{{ $image }}">
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
