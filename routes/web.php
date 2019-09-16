@@ -30,8 +30,8 @@ Route::resource('/admin/comment', 'CommentController');
 
 // Media
 Route::get('/admin/media', 'MediaController@index');
-// Route::post('/admin/media', 'MediaController@store');
-Route::post('/admin/media', 'MediaController@upload')->name('upload');
+Route::post('/admin/media', 'MediaController@store');
+Route::post('/admin/media/upload', 'MediaController@upload')->name('upload');
 Route::delete('/admin/media', 'MediaController@destroy');
 
 // Account

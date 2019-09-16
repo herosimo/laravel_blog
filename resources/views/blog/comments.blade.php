@@ -8,7 +8,7 @@
 <h2>Comment Section</h2>
 <ul>
     @foreach($comments as $comment)
-    <a href="/post/{{ $comment->post->id }}">
+    <a href="/post/{{ $comment->post->slug }}">
         <li>{{ $comment->comment }} by {{ $comment->commenter_name }}, on {{ $comment->post->post_title }}</li>
     </a>
     @endforeach

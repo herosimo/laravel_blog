@@ -35,13 +35,6 @@
 <script>
     ClassicEditor
         .create(document.querySelector('#editor'), {
-            // plugin: {
-            //     CKFinder
-            // },
-            // toolbar: {
-            //     'imageUpload'
-            // },
-
             ckfinder: {
                 uploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}"
             },

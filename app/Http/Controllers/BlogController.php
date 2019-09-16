@@ -37,13 +37,13 @@ class BlogController extends Controller
 
     public function archives()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();;
         return view('/blog/archives', compact('posts'));
     }
 
     public function comments()
     {
-        $comments = Comment::all();
+        $comments = Comment::orderBy('created_at', 'desc')->get();;
         return view('blog/comments', compact('comments'));
     }
 

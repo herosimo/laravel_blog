@@ -18,11 +18,6 @@ class MediaController extends Controller
     {
         $images = Storage::disk('public')->files('media');
 
-        foreach ($images as $image) {
-            $data = explode('/', $image);
-            $names[] = $data[1];
-        }
-
         return view('/admin/media/index', compact('images'));
     }
 
@@ -37,6 +32,7 @@ class MediaController extends Controller
         foreach ($images as $image) {
             // upload file on server
             $fileName = $image->getClientOriginalName();
+            $fileName = time() . '_' . $fileName;
             Storage::disk('public')->putFileAs('media', $image, $fileName);
         }
 
@@ -54,30 +50,17 @@ class MediaController extends Controller
 
     public function upload(Request $request)
     {
-        if ($request->hasFile('upload')) {
-            //get filename with extension
-            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+        $image = $request->file('upload');
+        $fileName = $image->getClientOriginalName();
+        $fileName = time() . '_' . $fileName;
 
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+        //Upload File
+        Storage::disk('public')->putFileAs('media', $image, $fileName);
+        $imageUrl = Storage::url('media/' . $fileName);
 
-            //get file extension
-            $extension = $request->file('upload')->getClientOriginalExtension();
-
-            //filename to store
-            $filenametostore = $filename . '_' . time() . '.' . $extension;
-
-            //Upload File
-            $request->file('upload')->storeAs('public/uploads', $filenametostore);
-
-            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('storage/uploads/' . $filenametostore);
-            $msg = 'Image successfully uploaded';
-            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-
-            // Render HTML output 
-            @header('Content-type: text/html; charset=utf-8');
-            echo $re;
-        }
+        return response()->json([
+            'uploaded' => 'true',
+            'url' => $imageUrl
+        ]);
     }
 }
