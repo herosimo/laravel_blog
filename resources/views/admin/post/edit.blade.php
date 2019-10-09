@@ -31,22 +31,4 @@
     <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'), {
-            ckfinder: {
-                uploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}"
-            },
-
-            mediaEmbed: {
-                previewsInData: true
-            }
-        })
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-</script>
 @endsection('content')

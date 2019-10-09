@@ -2,8 +2,14 @@
 @section('title', $post->post_title)
 @section('content')
 
-<h1>{{ $post->post_title }}</h1>
-<p class="text-secondary">Posted by {{ $post->user->name }}, on {{ $post->created_at }}</p>
+<h1 class="mb-4">{{ $post->post_title }}</h1>
+<div class="media mb-4">
+    <img class="img-profile rounded-circle mr-3" src="{{ url('/assets/photoPic/'.$post->user->photoProfile) }}" alt="User Pic">
+    <div class="media-body">
+        <h5 class="mt-0 mb-0">{{ $post->user->name }}</h5>
+        {{ $post->created_at->toFormattedDateString() }}
+    </div>
+</div>
 
 <div>
     {!! $post->post_text !!}

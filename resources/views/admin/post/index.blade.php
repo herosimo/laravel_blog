@@ -66,6 +66,9 @@
                     @method('DELETE')
                     @csrf
                     <div class="form-group mr-1">
+                        <a href="/post/{{ $post->slug }}" target="_blank">
+                            <button type="button" class="btn btn-warning btn-sm m-1">View</button>
+                        </a>
                         <a href="/admin/post/{{ $post->id }}/edit">
                             <button type="button" class="btn btn-primary btn-sm">Edit</button>
                         </a>

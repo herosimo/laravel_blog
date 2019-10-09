@@ -11,9 +11,8 @@
 
   <title>@yield('title', 'Admin Page')</title>
 
-  <!-- Custom fonts for this template-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -21,13 +20,12 @@
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <style>
-    .ck-editor__editable_inline {
-      min-height: 45vh;
-    }
-  </style>
-
+  <!-- CKEditor CDN -->
   <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+
+  <!-- Custom fonts for this template-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 </head>
 
@@ -42,20 +40,13 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
         <!-- <div class="sidebar-brand-icon"> -->
-        <i class="fas fa-heart"></i>
+        <i class="fas fa-meteor"></i>
         <!-- </div> -->
         <div class="sidebar-brand-text mx-3">Laravel Blog</div>
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="/admin">
-          <i class="fas fa-fw fa-compass"></i>
-          <span>Dashboard</span></a>
-      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -112,7 +103,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Media:</h6>
             <a class="collapse-item" href="/admin/media">Library</a>
-            <a class="collapse-item" href="/admin/media/create">Add New</a>
           </div>
         </div>
       </li>
@@ -201,7 +191,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white mt-5">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Laravel Blog 2019</span>
@@ -229,6 +219,26 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+  <!-- Custom CKEditor -->
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#editor'), {
+        ckfinder: {
+          uploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}"
+        },
+
+        mediaEmbed: {
+          previewsInData: true
+        }
+      })
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
 
 </body>
 
